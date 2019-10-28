@@ -42,12 +42,19 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{secrets.secret_key}}
       run: terraform init
     
-    - name: Terraform validate
+    - name: Terraform Validate
       working-directory: /opt/LearnDocker/swarm/
       env:
         AWS_ACCESS_KEY_ID: ${{secrets.access_key}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.secret_key}}
       run: terraform validate
+
+    - name: Terraform Apply
+      working-directory: /opt/LearnDocker/swarm/
+      env:
+        AWS_ACCESS_KEY_ID: ${{secrets.access_key}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.secret_key}}
+      run: terraform apply
 
       
         
