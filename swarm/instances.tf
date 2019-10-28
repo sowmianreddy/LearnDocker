@@ -1,22 +1,3 @@
-# store satefile in s3
-terraform {
-  required_version = "~> 0.11"
-  backend "s3" {
-    bucket = "swarmcluster-statefile"
-    key    = "swarmcluster/swarmcluster.tfstate"
-    region = "ap-south-1"
-  }
-}
-
-data "terraform_remote_state" "swarmcluster" {
-  backend = "s3"
-  config = {
-    bucket = "swarmcluster-statefile"
-    key    = "swarmcluster/terraform.tfstate"
-    region = "ap-south-1"
-  }
-}
-
 # Provision Docker swarm master Node with centos 7.
 resource "aws_instance" "swarm-master" {
   ami                    = var.SWARM_AMI_ID
