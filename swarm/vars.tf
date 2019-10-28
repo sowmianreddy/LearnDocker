@@ -15,10 +15,10 @@ variable "VPCID" {
 }
 
 variable "SWARM_PRIV_KEY" {
-  default = "keys/swarmLaunchKey"
+  default = ${{secrets.swarmLaunchKey}}
 }
 
 variable "SWARM_PUB_KEY" {
-  default = "keys/swarmLaunchKey.pub"
+  default = ${{secrets.swarmLaunchKeyPub}}
 }
 
