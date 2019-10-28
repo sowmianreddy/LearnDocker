@@ -27,6 +27,8 @@ resource "aws_instance" "swarm-master" {
             "sudo yum install vim -y",
             "sudo yum install wget -y",
             "wget -q0- https://get.docker.com/ | sh ",
+            "sudo systemctl enable docker",
+            "sudo systemctl start docker",
             "sudo useradd -aG docker centos",
             "sudo yum install nc -y"  
         ]
@@ -63,6 +65,8 @@ resource "aws_instance" "worker-1" {
             "sudo yum install vim -y",
             "sudo yum install wget -y",
             "wget -q0- https://get.docker.com/ | sh ",
+            "sudo systemctl enable docker",
+            "sudo systemctl start docker",
             "sudo useradd -aG docker centos",
             "sudo yum install nc -y"  
         ]
@@ -98,6 +102,8 @@ resource "aws_instance" "worker-2" {
             "sudo yum install vim -y",
             "sudo yum install wget -y",
             "wget -q0- https://get.docker.com/ | sh ",
+            "sudo systemctl enable docker",
+            "sudo systemctl start docker",
             "sudo useradd -aG docker centos",
             "sudo yum install nc -y"  
         ]
