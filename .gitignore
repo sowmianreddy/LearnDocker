@@ -1,0 +1,9 @@
+.DS_Store
+terraform_state*
+terraform_tfstate*
+.terraform*
+*LaunchKey*
+tfplan
+.terraform/
+terraform-provider-aws_v2.18.0_x4*
+terraform-provider-template_v2.1.2_x4
