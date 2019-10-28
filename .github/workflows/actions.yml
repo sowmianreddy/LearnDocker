@@ -19,6 +19,8 @@ jobs:
       run: |
          terraform --version
          whereis terraform
+         terraform 0.12upgrade
+         terraform --version
       
         
          
