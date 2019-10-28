@@ -2,7 +2,7 @@
 terraform {
   backend "s3" {
     bucket = "swarmcluster-statefile"
-    key    = "swarmcluster.tfstate"
+    key    = "swarmcluster/swarmcluster.tfstate"
     region = "ap-south-1"
   }
 }
