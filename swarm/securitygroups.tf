@@ -1,6 +1,6 @@
 resource "aws_security_group" "master-sg" {
     vpc_id = "${var.VPCID}"
-    name = "acsSG"
+    name = "masterSG"
     description = "Security group for docker-swarm Master Node."
 tags = {
     Name = "masterSG"
