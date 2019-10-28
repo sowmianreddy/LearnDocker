@@ -70,7 +70,7 @@ resource "aws_instance" "worker-1" {
 }
 
 # Provision Docker swarm worker Node with centos 7.
-resource "aws_instance" "worker-1" {
+resource "aws_instance" "worker-2" {
     ami = "${var.SWARM_AMI_ID}"
     instance_type = "t2.micro"
     subnet_id = "${var.SUBNETID}"
