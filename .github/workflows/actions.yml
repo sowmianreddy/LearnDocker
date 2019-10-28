@@ -1,0 +1,36 @@
+name: Terraform CI/CD
+
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout.
+    - uses: actions/checkout@v1
+
+    # Update
+    - name: update intermediatory container
+      run: apt-get update -y
+    
+    # Dependency Packages
+    - name: Install dependency packages
+      run: apt-get install wget unzip -y
+    
+    - name: remove cache 
+      run: rm -rf /var/lib/apt/lists/*
+    
+    - name: install terraform
+      run: | 
+        wget --quiet https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip
+        unzip terraform_0.12.7_linux_amd64.zip
+        mv terraform /usr/bin \
+        rm terraform_0.12.7_linux_amd64.zip
+        
+    - name: validate terraform installation
+      run: terraform --version
+      
