@@ -16,13 +16,13 @@ jobs:
     # Update
     - name: update intermediatory container
       run: |
-         apt-get update -y
-         apt-get install wget unzip -y
-         rm -rf /var/lib/apt/lists/*
-         wget --quiet https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip
-         unzip terraform_0.12.7_linux_amd64.zip
-         mv terraform /usr/bin \
-         rm terraform_0.12.7_linux_amd64.zip
+         sudo apt-get update -y
+         sudo apt-get install wget unzip -y
+         sudo rm -rf /var/lib/apt/lists/*
+         sudo wget --quiet https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip
+         sudo unzip terraform_0.12.7_linux_amd64.zip
+         sudo mv terraform /usr/bin \
+         sudo rm terraform_0.12.7_linux_amd64.zip
          terraform --version
          
          
