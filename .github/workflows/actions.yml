@@ -23,7 +23,7 @@ jobs:
          sudo rm terraform_0.12.7_linux_amd64.zip
          terraform --version
          
-    - name: terraform initialization
+    - name: Clone repository
       working-directory: /opt
       env:
         AWS_ACCESS_KEY_ID: ${{secrets.access_key}}
@@ -31,6 +31,13 @@ jobs:
       run: |
         git clone https://github.com/PrasadTelasula/LearnDocker.git
         ls -la /opt/LearnDocker
+        
+    - name: Terraform Initialize
+      working-directory: /opt/LearnDocker/swarm/
+      env:
+        AWS_ACCESS_KEY_ID: ${{secrets.access_key}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.secret_key}}
+      run: terraform init
       
         
          
