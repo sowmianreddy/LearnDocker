@@ -16,7 +16,9 @@ jobs:
     # Update
     - name: Install terraform
       working-directory: /tmp
-      run: terraform --version
+      run: |
+         terraform --version
+         whereis terraform
       
         
          
