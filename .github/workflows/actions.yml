@@ -54,7 +54,7 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{secrets.access_key}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.secret_key}}
-      run: terraform apply
+      run: terraform apply -auto-approve
 
       
         
