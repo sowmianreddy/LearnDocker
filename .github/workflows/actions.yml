@@ -22,7 +22,7 @@ jobs:
          sudo rm -rf /usr/local/bin/terraform
          sudo wget --quiet https://releases.hashicorp.com/terraform/0.12.12/terraform_0.12.12_linux_amd64.zip 
          sudo unzip terraform_0.12.12_linux_amd64.zip
-         sudo mv terraform /usr/bin 
+         sudo mv terraform /usr/local/bin
          sudo rm terraform_0.12.12_linux_amd64.zip
          terraform --version
       
