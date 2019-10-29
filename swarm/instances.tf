@@ -1,7 +1,7 @@
 # Provision Docker swarm master Node with centos 7.
 resource "aws_instance" "swarm-master" {
   ami                    = var.SWARM_AMI_ID
-  instance_type          = "t2.micro"
+  instance_type          = "t2.medium"
   subnet_id              = var.SUBNETID
   vpc_security_group_ids = [aws_security_group.master-sg.id]
   key_name               = aws_key_pair.swarmKeyPair.key_name
@@ -18,7 +18,13 @@ resource "aws_instance" "swarm-master" {
     private_key = file("keys/swarmLaunchKey")
   }
 
-  # Install pywinrm (dependency package to communicate with windows servers).
+  # Copy sample docker-compose file
+  provisioner "file" {
+        source      = "docker-compose.yaml"
+        destination = "/home/centos/docker-compose.yaml"
+  }
+
+  # Install Dependency Packages and Docker.
 
   provisioner "remote-exec" {
     inline = [
@@ -37,7 +43,7 @@ resource "aws_instance" "swarm-master" {
 # Provision Docker swarm worker Node with centos 7.
 resource "aws_instance" "worker-1" {
   ami                    = var.SWARM_AMI_ID
-  instance_type          = "t2.micro"
+  instance_type          = "t2.medium"
   subnet_id              = var.SUBNETID
   vpc_security_group_ids = [aws_security_group.worker-sg.id]
   key_name               = aws_key_pair.swarmKeyPair.key_name
@@ -54,7 +60,7 @@ resource "aws_instance" "worker-1" {
   }
 
 
-  # Install Dependency Packages
+  # Install Dependency Packages and Docker.
   provisioner "remote-exec" {
     inline = [
       #"sudo yum update -y",
@@ -72,7 +78,7 @@ resource "aws_instance" "worker-1" {
 # Provision Docker swarm worker Node with centos 7.
 resource "aws_instance" "worker-2" {
   ami                    = var.SWARM_AMI_ID
-  instance_type          = "t2.micro"
+  instance_type          = "t2.medium"
   subnet_id              = var.SUBNETID
   vpc_security_group_ids = [aws_security_group.worker-sg.id]
   key_name               = aws_key_pair.swarmKeyPair.key_name
@@ -88,7 +94,7 @@ resource "aws_instance" "worker-2" {
     private_key = file("keys/swarmLaunchKey")
   }
 
-  # Install Dependency Packages
+  # Install Dependency Packages and Docker.
   provisioner "remote-exec" {
     inline = [
       #"sudo yum update -y",
